@@ -32,6 +32,10 @@
   width: 100%;
 }
 
+.Spacer {
+margin-top: 12px;
+}
+
 .Bright:hover {
   background-color: #1a7c58;
   color: #ffffff;
@@ -39,5 +43,15 @@
 
 .Bright {
   background-color: #31c48d;
+  color: #fff;
+}
+
+.Dark:hover {
+  background-color: #1ba170;
+  color: #ffffff;
+}
+
+.Dark {
+  background-color: #1a7c58;
   color: #fff;
 }

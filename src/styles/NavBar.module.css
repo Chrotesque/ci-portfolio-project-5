@@ -10,3 +10,12 @@
 .Active i {
   color: #31c48d;
 }
+
+.NavBrand {
+  font-size: 1.25em;
+  padding-left: 6px;
+}
+
+.NavLogo {
+  padding-bottom: 7px;
+}

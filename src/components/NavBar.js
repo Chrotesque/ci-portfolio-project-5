@@ -28,6 +28,13 @@ const NavBar = () => {
 
   const loggedInIcons = (
     <>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/tasks/create"
+      >
+        <i className="far fa-plus-square"></i>Add task
+      </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
@@ -72,8 +79,8 @@ const NavBar = () => {
       <Container>
         <NavLink className={styles.NavLink} to="/">
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="45" />
-            Schedulize
+            <img className={styles.NavLogo} src={logo} alt="logo" height="45" />
+            <span className={styles.NavBrand}>Schedulize</span>
           </Navbar.Brand>
         </NavLink>
         <Navbar.Toggle
