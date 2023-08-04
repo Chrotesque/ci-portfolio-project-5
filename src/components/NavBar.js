@@ -3,11 +3,43 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from "../assets/schedulize_logo.jpg";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../context/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../context/CurrentUserContext";
+import Avatar from "./Avatar";
+import axios from "axios";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
-  const loggedInIcons = <>{currentUser?.username}</>;
+  const setCurrentUser = useSetCurrentUser();
+
+  const handleSignOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const loggedInIcons = (
+    <>
+      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+        <i className="fas fa-sign-out-alt"></i>Sign out
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        to={`/profiles/${currentUser?.profile_id}`}
+      >
+        <Avatar
+          src={currentUser?.profile_image}
+          text={currentUser?.username}
+          height={40}
+        />
+      </NavLink>
+    </>
+  );
   const loggedOutIcons = (
     <>
       <NavLink
