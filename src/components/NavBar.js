@@ -3,8 +3,30 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from "../assets/schedulize_logo.jpg";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
+import { useCurrentUser } from "../context/CurrentUserContext";
 
 const NavBar = () => {
+  const currentUser = useCurrentUser();
+  const loggedInIcons = <>{currentUser?.username}</>;
+  const loggedOutIcons = (
+    <>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/login"
+      >
+        <i className="fas fa-sign-in-alt"></i>Log in
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="register"
+      >
+        <i className="fas fa-user-plus"></i>Try it out for free!
+      </NavLink>
+    </>
+  );
+
   return (
     <Navbar className={styles.NavBar} expand="md" fixed="top">
       <Container>
@@ -17,20 +39,7 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-right">
-            <NavLink
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-              to="/login"
-            >
-              <i className="fas fa-sign-in-alt"></i>Log in
-            </NavLink>
-            <NavLink
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-              to="register"
-            >
-              <i className="fas fa-user-plus"></i>Try it out for free!
-            </NavLink>
+            {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
       </Container>
