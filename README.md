@@ -1,5 +1,5 @@
 # **Portfolio Project 5 - Schedulize**
-<a href="https://chrotesque-ci-portfolio-4.herokuapp.com/" target="_blank">View deployed site here.</a>
+<a href="https://chrotesque-cip5-04d27b18c413.herokuapp.com/" target="_blank">View deployed site here.</a>
 
 <br>
 
@@ -35,6 +35,6 @@
         <img src="./readme/images/main_ui.png" alt="Wireframe of the main ui the user is seeing when logged in on desktop devices">
         
         <br />
-        
+
     -   Home Page Wireframe - Logged in
         <img src="./readme/images/sign_up.png" alt="Wireframe of the sign up page on desktop devices">
