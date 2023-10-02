@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/Avatar.module.css";
 
 const Avatar = (props) => {
-  const { src, height = 45, text } = props;
+  const { src, height = 45, text, owner } = props;
   return (
     <span>
       <img
@@ -13,6 +13,7 @@ const Avatar = (props) => {
         alt="Your Avatar"
       />
       {text}
+      {owner}
     </span>
   );
 };
