@@ -16,8 +16,10 @@ import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import { useCurrentUser } from "../../context/CurrentUserContext";
 
 function TasksPage({ message, filter = "" }) {
+  const currentUser = useCurrentUser();
   const [tasks, setTasks] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
@@ -45,53 +47,65 @@ function TasksPage({ message, filter = "" }) {
     };
   }, [filter, query, pathname]);
 
-  return (
-    <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles mobile</p>
-        <i className={`fas fa-search ${styles.SearchIcon}`} />
-        <Form
-          className={styles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            className="mr-sm-2"
-            placeholder="Search posts"
-          />
-        </Form>
+  const taskListing = (
+    <>
+      <Row className="h-100">
+        <Col className="py-2 p-0 p-lg-2" lg={8}>
+          <p>Popular profiles mobile</p>
+          <i className={`fas fa-search ${styles.SearchIcon}`} />
+          <Form
+            className={styles.SearchBar}
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <Form.Control
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              type="text"
+              className="mr-sm-2"
+              placeholder="Search tasks"
+            />
+          </Form>
 
-        {hasLoaded ? (
-          <>
-            {tasks.results.length ? (
-              <InfiniteScroll
-                children={tasks.results.map((task) => (
-                  <Task key={task.id} {...task} setTasks={setTasks} />
-                ))}
-                dataLength={tasks.results.length}
-                loader={<Asset spinner />}
-                hasMore={!!tasks.next}
-                next={() => fetchMoreData(tasks, setTasks)}
-              />
-            ) : (
-              <Container className={appStyles.Content}>
-                <Asset src={NoResults} message={message} />
-              </Container>
-            )}
-          </>
-        ) : (
-          <Container className={appStyles.Content}>
-            <Asset spinner />
-          </Container>
-        )}
-      </Col>
-      <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        <p>Popular profiles for desktop</p>
-      </Col>
-    </Row>
+          {hasLoaded ? (
+            <>
+              {tasks.results.length ? (
+                <InfiniteScroll
+                  children={tasks.results.map((task) => (
+                    <Task key={task.id} {...task} setTasks={setTasks} />
+                  ))}
+                  dataLength={tasks.results.length}
+                  loader={<Asset spinner />}
+                  hasMore={!!tasks.next}
+                  next={() => fetchMoreData(tasks, setTasks)}
+                />
+              ) : (
+                <Container className={appStyles.Content}>
+                  <Asset src={NoResults} message={message} />
+                </Container>
+              )}
+            </>
+          ) : (
+            <Container className={appStyles.Content}>
+              <Asset spinner />
+            </Container>
+          )}
+        </Col>
+        <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+          <p>Popular profiles for desktop</p>
+        </Col>
+      </Row>
+    </>
   );
+
+  const loginOrRegister = (
+    <>
+      <span>
+        Login to your account or register now to start creating tasks!
+      </span>
+    </>
+  );
+
+  return <Container>{currentUser ? taskListing : loginOrRegister}</Container>;
 }
 
 export default TasksPage;

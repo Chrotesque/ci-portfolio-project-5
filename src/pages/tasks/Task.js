@@ -4,6 +4,7 @@ import { Card, Media } from "react-bootstrap";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Avatar from "../../components/Avatar";
+import { OwnerDropdown } from "../../components/OwnerDropdown";
 
 const Task = (props) => {
   const {
@@ -29,22 +30,23 @@ const Task = (props) => {
 
   return (
     <Card className={styles.Task}>
-      <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} height={55} />
-            {owner}
-          </Link>
-          <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
-            {is_owner && taskPage && "..."}
-          </div>
-        </Media>
-      </Card.Body>
-      <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {body && <Card.Text>{body}</Card.Text>}
-      </Card.Body>
+      <Link to={`/task/${id}`}>
+        <Card.Body className="text-left">
+          {title && <Card.Title>{title}</Card.Title>}
+          {body && <Card.Text>{body}</Card.Text>}
+        </Card.Body>
+        <Card.Body>
+          <Media className="align-items-center justify-content-between">
+            <Link to={`/profiles/${profile_id}`}>
+              {!is_owner && <Avatar src={profile_image} height={55} owner={owner}/> } 
+            </Link>
+            <div className="d-flex align-items-center">
+              <span>{updated_at}</span>
+              {is_owner && taskPage && <OwnerDropdown />}
+            </div>
+          </Media>
+        </Card.Body>
+      </Link>
     </Card>
   );
 };

@@ -7,8 +7,11 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../context/CurrentUserContext";
 
 function TaskCreateForm() {
+  const currentUser = useCurrentUser();
+
   const [errors, setErrors] = useState({});
 
   const [taskData, setTaskData] = useState({
@@ -43,7 +46,7 @@ function TaskCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/tasks/", formData);
-      history.push(`/tasks/${data.id}`);
+      history.push(`/task/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -163,25 +166,35 @@ function TaskCreateForm() {
     </div>
   );
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={6} lg={6}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            {textFields}
-          </Container>
-        </Col>
-        <Col md={6} lg={6} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>
-            {selectFields}
-            {buttons}
-          </Container>
-        </Col>
-      </Row>
-    </Form>
+  const form = (
+    <>
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col className="py-2 p-0 p-md-2" md={6} lg={6}>
+            <Container
+              className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+            >
+              {textFields}
+            </Container>
+          </Col>
+          <Col md={6} lg={6} className="d-none d-md-block p-0 p-md-2">
+            <Container className={appStyles.Content}>
+              {selectFields}
+              {buttons}
+            </Container>
+          </Col>
+        </Row>
+      </Form>
+    </>
   );
+
+  const login = (
+    <>
+      <span>You have to be logged in to create new tasks!</span>
+    </>
+  );
+
+  return <Container>{currentUser ? form : login}</Container>;
 }
 
 export default TaskCreateForm;
