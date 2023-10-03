@@ -46,7 +46,7 @@ function TaskCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/tasks/", formData);
-      history.push(`/task/${data.id}`);
+      history.push(`/tasks/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
