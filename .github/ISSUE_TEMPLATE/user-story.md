@@ -1,8 +1,8 @@
 ---
 name: User Story
 about: Default User Story Template
-title: "<TITLE>"
-labels: ''
+title: Title
+labels: User Story
 assignees: ''
 
 ---
@@ -13,4 +13,4 @@ Acceptance Criteria:
 - criteria
 
 Related Epic:
-**epic**
+* ref

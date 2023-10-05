@@ -2,12 +2,12 @@
 name: EPIC
 about: Default epic template.
 title: "[EPIC] TITLE"
-labels: ''
+labels: EPIC
 assignees: ''
 
 ---
 
-EPIC <name>
+EPIC **epic**
 
 Related User Stories:
-**user story**
+* ref
