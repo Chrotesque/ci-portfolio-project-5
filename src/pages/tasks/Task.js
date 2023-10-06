@@ -38,15 +38,6 @@ const Task = (props) => {
     history.push(`/tasks/${id}/delete`);
   };
 
-  const executeDelete = async () => {
-    try {
-      await axiosRes.delete(`/tasks/${id}/`);
-      history.goBack();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <Card className={styles.Task}>
       <Link to={`/tasks/${id}`}>
@@ -62,7 +53,9 @@ const Task = (props) => {
               )}
             </Link>
             <div className="d-flex align-items-center">
-              <span>{updated_at}</span>
+              <span>
+                Created @ {created_at}, updated @ {updated_at}
+              </span>
               {is_owner && taskPage && (
                 <OwnerDropdown
                   handleEdit={handleEdit}

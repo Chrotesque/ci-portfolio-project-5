@@ -19,7 +19,7 @@ import { useCurrentUser } from "../../context/CurrentUserContext";
 
 function TasksPage({ message, filter = "" }) {
   const currentUser = useCurrentUser();
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState({ results: []});
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
@@ -66,8 +66,8 @@ function TasksPage({ message, filter = "" }) {
           {hasLoaded ? (
             <>
               <Row>
-                {tasks.length ? (
-                  tasks.map((task) => (
+                {tasks.results.length ? (
+                  tasks.results.map((task) => (
                     <Col lg={3}>
                       <Task key={task.id} {...task} setTasks={setTasks} />
                     </Col>
