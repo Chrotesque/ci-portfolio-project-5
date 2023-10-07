@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
 
@@ -137,6 +137,17 @@ function TaskCreateForm() {
           <option value="WIP">Work in Progress</option>
           <option value="DEL">Delayed</option>
           <option value="DON">Completed</option>
+        </Form.Control>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Category</Form.Label>
+        <Form.Control
+          as="select"
+          name="category"
+          value={category}
+          onChange={handleChange}
+        >
+          <option value="test">Loading ...</option>
         </Form.Control>
       </Form.Group>
       {errors?.state?.map((message, idx) => (
