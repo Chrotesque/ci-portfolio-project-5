@@ -3,9 +3,17 @@ import styles from "../../styles/Task.module.css";
 import { Card, Media } from "react-bootstrap";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Avatar from "../../components/Avatar";
 import { OwnerDropdown } from "../../components/OwnerDropdown";
-import { axiosRes } from "../../api/axiosDefaults";
+import Asset from "../../components/Asset";
+
+import LO from "../../assets/priority/LO.png";
+import MI from "../../assets/priority/MI.png";
+import HI from "../../assets/priority/HI.png";
+import CR from "../../assets/priority/CR.png";
+import NEW from "../../assets/state/NEW.png";
+import WIP from "../../assets/state/WIP.png";
+import DON from "../../assets/state/DON.png";
+import DEL from "../../assets/state/DEL.png";
 
 const Task = (props) => {
   const {
@@ -40,32 +48,56 @@ const Task = (props) => {
 
   return (
     <Card className={styles.Task}>
-      <Link to={`/tasks/${id}`}>
-        <Card.Body className="text-left">
-          {title && <Card.Title>{title}</Card.Title>}
-          {body && <Card.Text>{body}</Card.Text>}
-        </Card.Body>
-        <Card.Body>
-          <Media className="align-items-center justify-content-between">
-            <Link to={`/profiles/${profile_id}`}>
-              {!is_owner && (
-                <Avatar src={profile_image} height={55} owner={owner} />
-              )}
-            </Link>
-            <div className="d-flex align-items-center">
-              <span>
-                Created @ {created_at}, updated @ {updated_at}
-              </span>
-              {is_owner && taskPage && (
-                <OwnerDropdown
-                  handleEdit={handleEdit}
-                  handleDelete={handleDelete}
-                />
-              )}
+      <div className="text-left">
+        <Link to={`/tasks/${id}`}>
+          {title && body && (
+            <>
+              <Card.Header>
+                <Card.Title>{title}</Card.Title>
+              </Card.Header>
+              <Card.Body>{body}</Card.Body>
+            </>
+          )}
+
+          {!title && body && <Card.Body>{body}</Card.Body>}
+
+          {title && !body && (
+            <Card.Header>
+              <Card.Title>{title}</Card.Title>
+            </Card.Header>
+          )}
+
+          <Card.Footer className={styles.TaskFooter}>
+            <div className="d-flex align-items-center justify-content-between">
+              <div>
+                {taskPage && <span>Priority: </span>}
+                {priority == "LO" && <Asset icon={LO} alt="Low Priority" />}
+                {priority == "MI" && <Asset icon={MI} alt="Medium Priority" />}
+                {priority == "HI" && <Asset icon={HI} alt="High Priority" />}
+                {priority == "CR" && (
+                  <Asset icon={CR} alt="Critical Priority" />
+                )}
+              </div>
+              <div>
+                {taskPage && <span>State: </span>}
+                {state == "NEW" && <Asset icon={NEW} alt="New" />}
+                {state == "WIP" && <Asset icon={WIP} alt="Work in Progress" />}
+                {state == "DON" && <Asset icon={DON} alt="Done" />}
+                {state == "DEL" && <Asset icon={DEL} alt="Delayed" />}
+              </div>
+              <div>{taskPage && <span>Created: {created_at}</span>}</div>
+              <div>
+                {is_owner && taskPage && (
+                  <OwnerDropdown
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                  />
+                )}
+              </div>
             </div>
-          </Media>
-        </Card.Body>
-      </Link>
+          </Card.Footer>
+        </Link>
+      </div>
     </Card>
   );
 };

@@ -1,12 +1,17 @@
 .Task {
   background-color: #ffffff;
-  border: 1px solid #dadadf;
+  border: 2px solid #cecece;
   border-radius: 2px;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
   text-align: center;
 }
 
 .Task figure,
 h5 {
   margin: 0 0;
+}
+
+.TaskFooter {
+  text-align: center;
+  padding: 20px;
 }

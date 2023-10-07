@@ -61,10 +61,10 @@ function TaskPage() {
 
   const overview = (
     <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <Col className="py-2 p-0 p-md-2" md={8} lg={8}>
         <Task {...task.results[0]} />
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+      <Col className="py-2 p-0 p-md-2" md={4} lg={4}>
         {buttons}
       </Col>
     </Row>

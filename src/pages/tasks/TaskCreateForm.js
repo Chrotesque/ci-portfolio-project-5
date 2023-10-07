@@ -19,8 +19,8 @@ function TaskCreateForm() {
     body: "",
     state: "",
     priority: "",
-    category: "",
-    due_date: "",
+    // category: "",
+    // due_date: "",
   });
 
   const { title, body, state, priority, category, due_date } = taskData;
@@ -40,7 +40,7 @@ function TaskCreateForm() {
 
     formData.append("title", title);
     formData.append("body", body);
-    formData.append("due_date", due_date);
+    // formData.append("due_date", due_date);
     formData.append("priority", priority);
     formData.append("state", state);
 
@@ -91,7 +91,7 @@ function TaskCreateForm() {
 
   const selectFields = (
     <div className="text-center">
-      <Form.Group>
+      {/* <Form.Group>
         <Form.Label>Due Date</Form.Label>
         <Form.Control
           type="datetime-local"
@@ -100,7 +100,7 @@ function TaskCreateForm() {
           value={due_date}
           onChange={handleChange}
         />
-      </Form.Group>
+      </Form.Group> */}
       {errors?.due_date?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
@@ -139,7 +139,7 @@ function TaskCreateForm() {
           <option value="DON">Completed</option>
         </Form.Control>
       </Form.Group>
-      <Form.Group>
+      {/* <Form.Group>
         <Form.Label>Category</Form.Label>
         <Form.Control
           as="select"
@@ -149,7 +149,7 @@ function TaskCreateForm() {
         >
           <option value="test">Loading ...</option>
         </Form.Control>
-      </Form.Group>
+      </Form.Group> */}
       {errors?.state?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
@@ -181,14 +181,14 @@ function TaskCreateForm() {
     <>
       <Form onSubmit={handleSubmit}>
         <Row>
-          <Col className="py-2 p-0 p-md-2" md={6} lg={6}>
+          <Col className="py-2 p-0 p-md-2" md={8} lg={8}>
             <Container
               className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
             >
               {textFields}
             </Container>
           </Col>
-          <Col md={6} lg={6} className="d-none d-md-block p-0 p-md-2">
+          <Col className="py-2 p-0 p-md-2" md={4} lg={4}>
             <Container className={appStyles.Content}>
               {selectFields}
               {buttons}
