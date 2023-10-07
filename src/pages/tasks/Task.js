@@ -67,10 +67,10 @@ const Task = (props) => {
             </Card.Header>
           )}
 
-          <Card.Footer className={styles.TaskFooter}>
-            <div className="d-flex align-items-center justify-content-between">
+          <Card.Footer>
+            <div className="d-flex align-items-center justify-content-between text-center">
               <div>
-                {taskPage && <span>Priority: </span>}
+                {taskPage && <span>Priority </span>}
                 {priority == "LO" && <Asset icon={LO} alt="Low Priority" />}
                 {priority == "MI" && <Asset icon={MI} alt="Medium Priority" />}
                 {priority == "HI" && <Asset icon={HI} alt="High Priority" />}
@@ -79,21 +79,26 @@ const Task = (props) => {
                 )}
               </div>
               <div>
-                {taskPage && <span>State: </span>}
+                {taskPage && <span>State </span>}
                 {state == "NEW" && <Asset icon={NEW} alt="New" />}
                 {state == "WIP" && <Asset icon={WIP} alt="Work in Progress" />}
                 {state == "DON" && <Asset icon={DON} alt="Done" />}
                 {state == "DEL" && <Asset icon={DEL} alt="Delayed" />}
               </div>
-              <div>{taskPage && <span>Created: {created_at}</span>}</div>
-              <div>
-                {is_owner && taskPage && (
+              {taskPage && (
+                <div>
+                  <span>Created: {created_at}</span>
+                </div>
+              )}
+
+              {is_owner && taskPage && (
+                <div>
                   <OwnerDropdown
                     handleEdit={handleEdit}
                     handleDelete={handleDelete}
                   />
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </Card.Footer>
         </Link>
