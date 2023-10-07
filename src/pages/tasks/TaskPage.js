@@ -38,7 +38,7 @@ function TaskPage() {
 
   return (
     <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <Col className="py-2 p-0 p-lg-2" lg={12}>
         <Task {...task.results[0]} taskPage />
         <Container className={appStyles.Content}>
           {currentUser ? (
@@ -67,9 +67,6 @@ function TaskPage() {
             <span>No comments yet.</span>
           )}
         </Container>
-      </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Buttons go here?
       </Col>
     </Row>
   );
