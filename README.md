@@ -7,7 +7,7 @@
 
 1. [Overview](#overview-)
 1. [UX](#ux-)
-1. [Model/Agile](#modelagile-)
+1. [Model](#model-)
 1. [Features](#features-)
 1. [Technologies Used](#technologies-used-)
 1. [Validation and Testing](#validation-and-testing-)
@@ -260,8 +260,6 @@ Specifics to the database model can be found on the Github page for the API <a h
     - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
 1. [GitHub:](https://github.com/)
     - GitHub is used to store the project's code after being pushed from Git.
-1. [Google Fonts:](https://fonts.google.com/)
-    - Google fonts were used to import the 'Oswald' and 'Merriweather' fonts into the style.css file.
 1. [Font Awesome:](https://fontawesome.com/)
     - Font Awesome was used to add icons for aesthetic and UX purposes.
 1. [Bootstrap](https://getbootstrap.com/)
@@ -285,7 +283,7 @@ Specifics to the database model can be found on the Github page for the API <a h
 1. [Balsamiq](https://balsamiq.com/)
     - Balsamiq was used to create [Wireframes](#wireframes) for the project.
 1. [Photoshop:](https://www.adobe.com/products/photoshop/)
-    - Gimp was used to create, modify and resize all images on this website.
+    - Photoshop was used to modify some Font Awesome icons and to create some from scratch.
 
 <br>
 
@@ -376,13 +374,13 @@ More were not implemented due to time constraints.
 
 - By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps:
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Mycrosys/portfolio-project-5-peppermint)
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Chrotesque/ci-portfolio-project-5)
 1. At the top of the Repository (not the top of the page) just above the "Settings" button on the menu, locate the "Fork" button.
 1. You should now have a copy of the original repository in your GitHub account.
 
 ### Making a Local Clone
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Mycrosys/portfolio-project-5-peppermint)
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Chrotesque/ci-portfolio-project-5)
 1. Under the repository name, click "Clone or download".
 1. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
 1. Open Git Bash
