@@ -70,7 +70,7 @@ function TasksPage({ message, filter = "" }) {
               <Row>
                 {tasks.results.length ? (
                   tasks.results.map((task) => (
-                    <Col lg={3}>
+                    <Col key={task.id} lg={3}>
                       <Task key={task.id} {...task} setTasks={setTasks} />
                     </Col>
                   ))
