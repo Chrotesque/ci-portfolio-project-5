@@ -64,8 +64,8 @@ function TaskEditForm() {
     formData.append("state", state);
 
     try {
-      const { data } = await axiosReq.post("/tasks/", formData);
-      history.push(`/tasks/${data.id}`);
+      await axiosReq.put(`/tasks/${id}`, formData);
+      history.push(`/tasks/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
