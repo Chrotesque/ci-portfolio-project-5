@@ -23,20 +23,6 @@ function TaskCreateForm() {
     // due_date: "",
   });
 
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        if (!currentUser) {
-          history.push("/");
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    handleMount();
-  });
-
   const { title, body, state, priority, category, due_date } = taskData;
 
   const history = useHistory();
