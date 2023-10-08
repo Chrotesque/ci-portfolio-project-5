@@ -7,6 +7,10 @@
   padding: 5px;
 }
 
+.NonNavLink {
+  padding: 5px;
+}
+
 .Active i {
   color: #31c48d;
 }
