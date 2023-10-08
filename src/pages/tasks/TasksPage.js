@@ -14,7 +14,6 @@ import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import NoResults from "../../assets/no-results.png";
-import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 
 function TasksPage({ message, filter = "" }) {

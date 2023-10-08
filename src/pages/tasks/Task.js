@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/Task.module.css";
-import { Card, Media } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { OwnerDropdown } from "../../components/OwnerDropdown";
@@ -16,23 +16,8 @@ import DON from "../../assets/state/DON.png";
 import DEL from "../../assets/state/DEL.png";
 
 const Task = (props) => {
-  const {
-    id,
-    owner,
-    profile_id,
-    profile_image,
-    created_at,
-    updated_at,
-    title,
-    body,
-    state,
-    priority,
-    overdue,
-    due_date,
-    coowner,
-    category,
-    taskPage,
-  } = props;
+  const { id, owner, created_at, title, body, state, priority, taskPage } =
+    props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -71,19 +56,19 @@ const Task = (props) => {
             <div className="d-flex align-items-center justify-content-between text-center">
               <div>
                 {taskPage && <span>Priority </span>}
-                {priority == "LO" && <Asset icon={LO} alt="Low Priority" />}
-                {priority == "MI" && <Asset icon={MI} alt="Medium Priority" />}
-                {priority == "HI" && <Asset icon={HI} alt="High Priority" />}
-                {priority == "CR" && (
+                {priority === "LO" && <Asset icon={LO} alt="Low Priority" />}
+                {priority === "MI" && <Asset icon={MI} alt="Medium Priority" />}
+                {priority === "HI" && <Asset icon={HI} alt="High Priority" />}
+                {priority === "CR" && (
                   <Asset icon={CR} alt="Critical Priority" />
                 )}
               </div>
               <div>
                 {taskPage && <span>State </span>}
-                {state == "NEW" && <Asset icon={NEW} alt="New" />}
-                {state == "WIP" && <Asset icon={WIP} alt="Work in Progress" />}
-                {state == "DON" && <Asset icon={DON} alt="Done" />}
-                {state == "DEL" && <Asset icon={DEL} alt="Delayed" />}
+                {state === "NEW" && <Asset icon={NEW} alt="New" />}
+                {state === "WIP" && <Asset icon={WIP} alt="Work in Progress" />}
+                {state === "DON" && <Asset icon={DON} alt="Done" />}
+                {state === "DEL" && <Asset icon={DEL} alt="Delayed" />}
               </div>
               {taskPage && (
                 <div>

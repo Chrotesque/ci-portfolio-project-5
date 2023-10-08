@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
 
@@ -23,7 +23,7 @@ function TaskCreateForm() {
     // due_date: "",
   });
 
-  const { title, body, state, priority, category, due_date } = taskData;
+  const { title, body, state, priority } = taskData;
 
   const history = useHistory();
 
@@ -40,7 +40,6 @@ function TaskCreateForm() {
 
     formData.append("title", title);
     formData.append("body", body);
-    // formData.append("due_date", due_date);
     formData.append("priority", priority);
     formData.append("state", state);
 
@@ -91,16 +90,6 @@ function TaskCreateForm() {
 
   const selectFields = (
     <div className="text-center">
-      {/* <Form.Group>
-        <Form.Label>Due Date</Form.Label>
-        <Form.Control
-          type="datetime-local"
-          name="due_date"
-          placeholder="Due Date"
-          value={due_date}
-          onChange={handleChange}
-        />
-      </Form.Group> */}
       {errors?.due_date?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
@@ -139,17 +128,6 @@ function TaskCreateForm() {
           <option value="DON">Completed</option>
         </Form.Control>
       </Form.Group>
-      {/* <Form.Group>
-        <Form.Label>Category</Form.Label>
-        <Form.Control
-          as="select"
-          name="category"
-          value={category}
-          onChange={handleChange}
-        >
-          <option value="test">Loading ...</option>
-        </Form.Control>
-      </Form.Group> */}
       {errors?.state?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}

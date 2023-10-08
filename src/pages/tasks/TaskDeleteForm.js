@@ -33,7 +33,7 @@ function TaskPage() {
     };
 
     handleMount();
-  }, [id]);
+  }, [id, history]);
 
   const handleDelete = async () => {
     try {

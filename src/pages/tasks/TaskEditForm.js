@@ -21,10 +21,9 @@ function TaskEditForm() {
     state: "",
     priority: "",
     category: "",
-    due_date: "",
   });
 
-  const { title, body, state, priority, category, due_date } = taskData;
+  const { title, body, state, priority } = taskData;
 
   const history = useHistory();
   const { id } = useParams();
@@ -59,7 +58,6 @@ function TaskEditForm() {
 
     formData.append("title", title);
     formData.append("body", body);
-    // formData.append("due_date", due_date);
     formData.append("priority", priority);
     formData.append("state", state);
 
@@ -110,16 +108,6 @@ function TaskEditForm() {
 
   const selectFields = (
     <div className="text-center">
-      {/* <Form.Group>
-        <Form.Label>Due Date</Form.Label>
-        <Form.Control
-          type="datetime-local"
-          name="due_date"
-          placeholder="Due Date"
-          value={due_date}
-          onChange={handleChange}
-        />
-      </Form.Group> */}
       {errors?.due_date?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
