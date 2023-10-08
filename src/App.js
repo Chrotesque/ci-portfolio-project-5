@@ -11,6 +11,7 @@ import TasksPage from "./pages/tasks/TasksPage";
 import { useCurrentUser } from "./context/CurrentUserContext";
 import TaskEditForm from "./pages/tasks/TaskEditForm";
 import TaskDeleteForm from "./pages/tasks/TaskDeleteForm";
+import NotFound from "./components/NotFound";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -51,7 +52,7 @@ function App() {
             path="/tasks/:id/delete"
             render={() => <TaskDeleteForm />}
           />
-          <Route render={() => <p>Page not found!</p>} />
+          <Route render={() => <NotFound />} />
         </Switch>
       </Container>
     </div>

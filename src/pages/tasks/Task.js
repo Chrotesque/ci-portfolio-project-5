@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/Task.module.css";
-import { Card } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { OwnerDropdown } from "../../components/OwnerDropdown";

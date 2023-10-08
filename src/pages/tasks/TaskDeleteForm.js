@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import { Button, Row, Col, Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+
 import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory } from "react-router";
