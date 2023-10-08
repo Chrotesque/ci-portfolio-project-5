@@ -42,9 +42,6 @@ function CommentCreateForm(props) {
   return (
     <Form className="mt-2" onSubmit={handleSubmit}>
       <Form.Group>
-        <Link to={`/profiles/${profile_id}`}>
-          <Avatar src={profileImage} />
-        </Link>
         <Form.Control
           className={styles.Form}
           placeholder="Write a comment ..."

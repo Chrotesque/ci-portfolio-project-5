@@ -9,7 +9,6 @@ import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../context/CurrentUserContext";
-import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutSideToggle from "../hooks/useClickOutSideToggle";
 import { removeTokenTimestamp } from "../utils/utils";
@@ -50,11 +49,8 @@ const NavBar = () => {
         <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
       <div className={styles.NonNavLink}>
-        <Avatar
-          src={currentUser?.profile_image}
-          text={currentUser?.username}
-          height={40}
-        />
+        <i class="fas fa-user-circle"></i>
+        {currentUser?.username}
       </div>
     </>
   );
