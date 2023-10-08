@@ -5,7 +5,10 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import Task from "./Task";
 import Comment from "../comments/Comment";
@@ -18,6 +21,7 @@ function TaskPage() {
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
+  const history = useHistory();
 
   useEffect(() => {
     const handleMount = async () => {
@@ -26,17 +30,22 @@ function TaskPage() {
           axiosReq.get(`/tasks/${id}`),
           axiosReq.get(`/comments/?task=${id}`),
         ]);
-        setTask({ results: [task] });
-        setComments(comments);
+
+        if (task.is_owner) {
+          setTask({ results: [task] });
+          setComments(comments);
+        } else {
+          history.push("/");
+        }
       } catch (err) {
         // console.log(err);
       }
     };
 
     handleMount();
-  }, [id]);
+  }, [id, history]);
 
-  return (
+  const taskView = (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={12}>
         <Task {...task.results[0]} taskPage />
@@ -70,6 +79,14 @@ function TaskPage() {
       </Col>
     </Row>
   );
+
+  const login = (
+    <>
+      <span>You have to be logged in to view tasks!</span>
+    </>
+  );
+
+  return <Container>{currentUser ? taskView : login}</Container>;
 }
 
 export default TaskPage;
