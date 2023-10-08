@@ -21,7 +21,12 @@ function TaskPage() {
         const [{ data: task }] = await Promise.all([
           axiosReq.get(`/tasks/${id}`),
         ]);
-        setTask({ results: [task] });
+
+        if (task.is_owner) {
+          setTask({ results: [task] });
+        } else {
+          history.push("/");
+        }
       } catch (err) {
         console.log(err);
       }
@@ -72,7 +77,7 @@ function TaskPage() {
 
   const login = (
     <>
-      <span>You have to be logged in to delete a tasks!</span>
+      <span>You have to be logged in to delete tasks!</span>
     </>
   );
 

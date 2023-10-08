@@ -209,7 +209,7 @@ function TaskEditForm() {
 
   const login = (
     <>
-      <span>You have to be logged in to create new tasks!</span>
+      <span>You have to be logged in to edit tasks!</span>
     </>
   );
 
