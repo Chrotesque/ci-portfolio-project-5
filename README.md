@@ -10,7 +10,7 @@
 1. [Model](#model-)
 1. [Features](#features-)
 1. [Technologies Used](#technologies-used-)
-1. [Validation and Testing](#validation-and-testing-)
+1. [Testing](#testing-)
 1. [Deployment](#deployment-)
 1. [Credits](#credits-)
 
@@ -240,6 +240,11 @@ Specifics to the database model can be found on the Github page for the API <a h
         - Inviting would ideally not feature a search but rather sending out the invite to a user name / email to maintain privacy, also a service with thousands or more users would make a search bothersome and sluggish/slow
     - Profiles
         - Profile display including changing ones avatar not implemented, as such I removed all displays of the avatar but left the component
+    - Welcome Screen
+        - A splash screen with a Call to Action would be appropriate for a new user, couldn't fit that in due to time constraints
+    - Infinite Scrolling
+        - While it was enabled at some point, I removed it and reactivated pagination and limited it to 1000 items per page, without the option to actually change pages
+        - Initially this shouldn't be a problem for most users, however it's a simple workaround the fact that I struggled to accomoate the code for a lack of pagination (and thus the API data structure was slightly different, causing troubles) and I was unable to make bootstrap work with infinite scrolling and opted in for a quick workaround to submit this project
 
 <br>
 
