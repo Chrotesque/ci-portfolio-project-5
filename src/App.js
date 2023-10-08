@@ -31,13 +31,19 @@ function App() {
               />
             )}
           />
-          <Route exact path="/login" render={() => <SignInForm />} />
-          <Route exact path="/register" render={() => <SignUpForm />} />
           <Route
             exact
-            path="/tasks/create"
-            render={() => <TaskCreateForm />}
+            path="/tasks/completed"
+            render={() => (
+              <TasksPage
+                message="No completed tasks found. Time to create and then finish a few!"
+                filter={`owner__profile=${profile_id}&state=DEL&`}
+              />
+            )}
           />
+          <Route exact path="/login" render={() => <SignInForm />} />
+          <Route exact path="/register" render={() => <SignUpForm />} />
+          <Route exact path="/tasks/create" render={() => <TaskCreateForm />} />
           <Route exact path="/tasks/:id" render={() => <TaskPage />} />
           <Route exact path="/tasks/:id/edit" render={() => <TaskEditForm />} />
           <Route

@@ -35,6 +35,13 @@ const NavBar = () => {
       >
         <i className="far fa-plus-square"></i>Add task
       </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/tasks/completed"
+      >
+        <i class="fas fa-check-circle"></i>Completed tasks
+      </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>

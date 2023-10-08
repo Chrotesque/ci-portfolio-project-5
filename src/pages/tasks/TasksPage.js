@@ -19,7 +19,7 @@ import { useCurrentUser } from "../../context/CurrentUserContext";
 
 function TasksPage({ message, filter = "" }) {
   const currentUser = useCurrentUser();
-  const [tasks, setTasks] = useState({ results: []});
+  const [tasks, setTasks] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
@@ -28,7 +28,9 @@ function TasksPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const { data } = await axiosReq.get(`/tasks/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(
+          `/tasks/?${filter}&state=DON&search=${query}`
+        );
         setTasks(data);
         setHasLoaded(true);
       } catch (err) {
