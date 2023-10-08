@@ -33,7 +33,7 @@ function TasksPage({ message, filter = "" }) {
         setTasks(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log("fetchTasks Errors:" + err);
+        // console.log(err);
       }
     };
 

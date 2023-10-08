@@ -32,7 +32,7 @@ function TaskPage() {
           history.push("/");
         }
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -44,7 +44,7 @@ function TaskPage() {
       await axiosRes.delete(`/tasks/${id}`);
       history.push("/");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

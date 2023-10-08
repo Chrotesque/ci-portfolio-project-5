@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
@@ -23,8 +24,6 @@ function CommentCreateForm(props) {
         body,
         task,
       });
-      console.log(data);
-      console.log(setComments);
       setComments((prevComments) => ({
         ...prevComments,
         results: [data, ...prevComments.results],
@@ -33,31 +32,30 @@ function CommentCreateForm(props) {
         results: [
           {
             ...prevTask.results[0],
-          }
-        ]
+          },
+        ],
       }));
       setBody("");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
   return (
     <Form className="mt-2" onSubmit={handleSubmit}>
       <Form.Group>
-        <InputGroup>
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profileImage} />
-          </Link>
-          <Form.Control
-            className={styles.Form}
-            placeholder="Write a comment ..."
-            as="textarea"
-            value={body}
-            onChange={handleChange}
-            rows={2}
-          />
-        </InputGroup>
+        <Link to={`/profiles/${profile_id}`}>
+          <Avatar src={profileImage} />
+        </Link>
+        <Form.Control
+          className={styles.Form}
+          placeholder="Write a comment ..."
+          as="textarea"
+          name="body"
+          value={body}
+          onChange={handleChange}
+          rows={2}
+        />
       </Form.Group>
       <button
         className={`${styles.Button} btn d-block ml-auto`}

@@ -43,7 +43,7 @@ function TaskEditForm() {
           ? setTaskData({ title, body, due_date, state, priority })
           : history.push("/");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -70,10 +70,7 @@ function TaskEditForm() {
       await axiosReq.put(`/tasks/${id}`, formData);
       history.push(`/tasks/${id}`);
     } catch (err) {
-      console.log(err);
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
-      }
+      // console.log(err);
     }
   };
 
