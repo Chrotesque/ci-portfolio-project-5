@@ -29,7 +29,7 @@ function TasksPage({ message, filter = "" }) {
     const fetchTasks = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/tasks/?${filter}&state=DON&search=${query}`
+          `/tasks/?${filter}&search=${query}`
         );
         setTasks(data);
         setHasLoaded(true);

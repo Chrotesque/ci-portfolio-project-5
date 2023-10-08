@@ -37,7 +37,7 @@ function App() {
             render={() => (
               <TasksPage
                 message="No completed tasks found. Time to create and then finish a few!"
-                filter={`owner__profile=${profile_id}&state=DEL&`}
+                filter={`owner__profile=${profile_id}&state=DON&`}
               />
             )}
           />
