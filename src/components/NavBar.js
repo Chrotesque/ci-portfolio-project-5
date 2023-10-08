@@ -10,6 +10,7 @@ import {
 import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutSideToggle from "../hooks/useClickOutSideToggle";
+import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -21,6 +22,7 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +42,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/tasks/completed"
       >
-        <i class="fas fa-check-circle"></i>Completed tasks
+        <i className="fas fa-check-circle"></i>Completed tasks
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign out
