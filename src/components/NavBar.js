@@ -49,7 +49,7 @@ const NavBar = () => {
         <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
       <div className={styles.NonNavLink}>
-        <i class="fas fa-user-circle"></i>
+        <i className="fas fa-user-circle"></i>
         {currentUser?.username}
       </div>
     </>

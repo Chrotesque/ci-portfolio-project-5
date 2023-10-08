@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Media from "react-bootstrap/Media";
-import Avatar from "../../components/Avatar";
 import { OwnerDropdown } from "../../components/OwnerDropdown";
 import CommentEditForm from "./CommentEditForm";
 
